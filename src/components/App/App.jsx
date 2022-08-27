@@ -1,8 +1,7 @@
-import React from 'react';
-
-import Header from '../Header/Header.jsx'
-import './App.css';
-
+import React from "react";
+import axios from "axios";
+import Header from "../Header/Header.jsx";
+import "./App.css";
 
 function App() {
     return (
@@ -11,6 +10,9 @@ function App() {
             <main>
                 <p>Under Construction...</p>
             </main>
+            {/* The input fields go here */}
+            {/* Grocery list functions (reset/clear) */}
+            {/* The grocery items go here */}
         </div>
     );
 }
