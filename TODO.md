@@ -1,7 +1,7 @@
 **_Make sure you run a client and a server, run your database as well_**
 The database is called: fs-react-shopping
 
--   [] npm install (to grab dependencies)
+-   [x] npm install (to grab dependencies)
 -   [x] install axios
 -   [x] import axios
 -   [x] install material ui (see below)
@@ -67,3 +67,10 @@ Install SVG icons via npm
 ```
 npm install @mui/icons-material
 ```
+
+Delegating tasks
+
+-   [] Input component [Nathan]
+-   [] Grocery component [Jennifer]
+-   [] Item component [Tu]
+-   [] axios routes / grocery.router.js [Nathan]

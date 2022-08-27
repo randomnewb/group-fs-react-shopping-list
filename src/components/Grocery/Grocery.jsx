@@ -3,10 +3,11 @@ import "./Grocery.css";
 
 function Grocery() {
     return (
-        <div>
-            <h1>Shopping List</h1>
-            <button id="reset">Reset</button>
-            <button id="clear">Clear</button>
+        <div className="groceryList">
+            <h2>Shopping List</h2>
+            <br />
+            <button>Reset</button>
+            <button>Clear</button>
         </div>
     );
 }
