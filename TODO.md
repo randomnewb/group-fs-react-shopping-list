@@ -74,3 +74,6 @@ Delegating tasks
 -   [] Grocery component [Jennifer]
 -   [] Item component [Tu]
 -   [] axios routes / grocery.router.js [Nathan]
+-   [] useState, useEffect
+
+Object name: 'grocery'
