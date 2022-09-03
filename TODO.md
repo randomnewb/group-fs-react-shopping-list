@@ -26,9 +26,9 @@ Router
 
 Fields
 
--   [] Item
--   [] Quantity
--   [] Unit
+-   [x] Item
+-   [x] Quantity
+-   [x] Unit
 
 Button
 
@@ -40,39 +40,39 @@ Button
 
 Router
 
--   [] DELETE (all)
--   [] PUT ('reset' all)
+-   [x] DELETE (all)
+-   [x] PUT ('reset' all)
 
 App.jsx
 
--   DELETE (all)
--   PUT ('reset' all)
+-   [x] DELETE (all)
+-   [x] PUT ('reset' all)
 
 Inside component
 
--   [] Reset button (changes status of all items from purchased to not purchased)
--   [] Clear button (deletes all items from database)
+-   [x] Reset button (changes status of all items from purchased to not purchased)
+-   [x] Clear button (deletes all items from database)
 
 ### Item Component (will have access to the id) - Add maxWidth attribute
 
 Router
 
--   [] GET
+-   [x] GET
 -   [] POST (by id)
 -   [] DELETE (by id)
 
 App.jsx
 
--   [] GET
+-   [x] GET
 -   [] POST (by id)
 -   [] DELETE (by id)
 
 Component (map through)
 
--   [] name label
--   [] quantity and unit label
--   [] buy button
--   [] remove button
+-   [x] name label
+-   [x] quantity and unit label
+-   [x] buy button
+-   [x] remove button
 
 ### Installation
 
