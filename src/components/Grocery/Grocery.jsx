@@ -1,15 +1,13 @@
-import React from "react";
 import "./Grocery.css";
 
-function Grocery() {
+function Grocery({clearGrocery, resetGrocery}) {
     return (
-        <div className="groceryList">
+        <div className="grocery-component">
             <h2>Shopping List</h2>
-            <br />
-            <button>Reset</button>
-            <button>Clear</button>
+            <button onClick={clearGrocery}>Clear</button>
+            <button onClick={resetGrocery}>Reset</button>
         </div>
     );
-}
+};
 
 export default Grocery;

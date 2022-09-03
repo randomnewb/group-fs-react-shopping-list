@@ -18,14 +18,39 @@ function App() {
     }, []);
 
     // GET
+    function fetchGrocery() {};
 
     // POST
 
     // PUT (all)
+    const resetGrocery = () => {
+        console.log('in resetGrocery (all)');
+        axios({
+            method: 'PUT',
+            url: `/grocery`
+        }).then(response => {
+            fetchGrocery();
+        }).catch(error => {
+            console.log(error);
+            alert('There\'s an error.');
+        });
+    }
 
     // PUT (by id)
 
     // DELETE (all)
+    const clearGrocery = () => {
+        console.log('in clearGrocery (all)');
+        axios({
+            method: 'DELETE',
+            url: `/grocery`
+        }).then(response => {
+            fetchGrocery();
+        }).catch(error => {
+            console.log(error);
+            alert('There\'s an error.');
+        });
+    }
 
     // DELETE (by id)
 
@@ -36,7 +61,9 @@ function App() {
                 <p>Under Construction...</p>
             </main>
             <Input />
-            <Grocery />
+            <Grocery 
+                clearGrocery={clearGrocery}
+                resetGrocery={resetGrocery}/>
             <Item />
         </div>
     );
