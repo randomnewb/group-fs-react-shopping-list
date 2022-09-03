@@ -75,7 +75,6 @@ function App() {
     // PUT (by id)
 
     const groceryPurchase = (grocery) => {
-        console.log("In purchase");
         axios({
             method: "PUT",
             url: `/grocery/${grocery.id}`,
