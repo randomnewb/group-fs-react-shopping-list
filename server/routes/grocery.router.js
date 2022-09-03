@@ -17,48 +17,71 @@ router.get("/", (req, res) => {
         });
 });
 
-router.post('/', (req, res) => {
-    console.log('In Post request');
+router.post("/", (req, res) => {
+    console.log("In Post request");
     let queryText = `INSERT INTO "grocery" 
                     ("item", "quantity", "unit", "purchased") 
-                    VALUES ($1, $2, $3, $4);`
-    pool.query(queryText, 
-        [req.body.item, req.body.quantity, 
-        req.body.unit, req.body.purchased])
+                    VALUES ($1, $2, $3, $4);`;
+    pool.query(queryText, [
+        req.body.item,
+        req.body.quantity,
+        req.body.unit,
+        req.body.purchased,
+    ])
 
-.then((result) => {
-    res.sendStatus(200);
-}).catch((error) => {
-    console.log(error);
-    res.sendStatus(500);
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        });
 });
-});
-
 
 // PUT (all)
-router.put('/', (req, res) => {
-    console.log('in PUT /grocery - Reset all purchased status')
-    const queryText =   `UPDATE "grocery"
+router.put("/", (req, res) => {
+    console.log("in PUT /grocery - Reset all purchased status");
+    const queryText = `UPDATE "grocery"
                         SET "purchased" = false
                         WHERE "purchased" = true;`;
-    pool.query(queryText).then((results) => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        res.sendStatus(500);
-    });
+    pool.query(queryText)
+        .then((results) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+        });
 });
 
+// PUT (item by id)
+router.put("/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = `
+    UPDATE grocery
+    SET purchased = true
+    where id = $1;
+    `;
+    pool.query(sql, [id])
+        .then((response) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log(`Error updating specific grocery`, error);
+            res.sendStatus(500);
+        });
+});
 
 // DELETE (all)
-router.delete('/', (req, res) => {
-    console.log('in DELETE /grocery - Clear all');
+router.delete("/", (req, res) => {
+    console.log("in DELETE /grocery - Clear all");
     const queryText = 'DELETE FROM "grocery";';
-    pool.query(queryText).then((results) => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        res.sendStatus(500);
-    });
+    pool.query(queryText)
+        .then((results) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+        });
 });
-
 
 module.exports = router;

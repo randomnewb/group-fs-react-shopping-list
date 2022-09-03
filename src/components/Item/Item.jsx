@@ -7,7 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-function Item({ groceryList }) {
+function Item({ groceryList, groceryPurchase, groceryDelete }) {
     return (
         <Grid>
             {groceryList.map((grocery) => {
@@ -18,7 +18,17 @@ function Item({ groceryList }) {
                                 {grocery.item} {grocery.quantity} {grocery.unit}
                             </Typography>
                             <CardActions>
-                                <Button>Buy</Button>
+                                {grocery.purchased ? (
+                                    <h4> Added! </h4>
+                                ) : (
+                                    <Button
+                                        onClick={() =>
+                                            groceryPurchase(grocery)
+                                        }>
+                                        Buy
+                                    </Button>
+                                )}
+
                                 <Button>Delete</Button>
                             </CardActions>
                         </CardContent>

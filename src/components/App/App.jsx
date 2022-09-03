@@ -33,58 +33,77 @@ function App() {
     // POST
 
     const addGroceryItem = (evt) => {
-      evt.preventDefault();
-      axios({
-        method: 'POST',
-        url: '/grocery',
-        data: {
-          item: groceryName,
-          quantity: groceryQuantity,
-          unit: groceryUnit,
-          purchased: false,
-        }
-      }).then(response => {
-        setGroceryName(''),
-        setGroceryQuantity(''),
-        setGroceryUnit(''),
-        fetchGrocery();
-      }).catch(error => {
-        console.log(error);
-        alert('Something wrong in axios POST');
-      });
-    }
-
-
+        evt.preventDefault();
+        axios({
+            method: "POST",
+            url: "/grocery",
+            data: {
+                item: groceryName,
+                quantity: groceryQuantity,
+                unit: groceryUnit,
+                purchased: false,
+            },
+        })
+            .then((response) => {
+                setGroceryName(""),
+                    setGroceryQuantity(""),
+                    setGroceryUnit(""),
+                    fetchGrocery();
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Something wrong in axios POST");
+            });
+    };
 
     // PUT (all)
     const resetGrocery = () => {
-        console.log('in resetGrocery (all)');
+        console.log("in resetGrocery (all)");
         axios({
-            method: 'PUT',
-            url: `/grocery`
-        }).then(response => {
-            fetchGrocery();
-        }).catch(error => {
-            console.log(error);
-            alert('There\'s an error.');
-        });
-    }
+            method: "PUT",
+            url: `/grocery`,
+        })
+            .then((response) => {
+                fetchGrocery();
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("There's an error.");
+            });
+    };
 
     // PUT (by id)
 
+    const groceryPurchase = (grocery) => {
+        console.log("In purchase");
+        axios({
+            method: "PUT",
+            url: `/grocery/${grocery.id}`,
+        })
+            .then((response) => {
+                console.log(response);
+                fetchGrocery();
+            })
+            .catch((error) => {
+                alert("Something went wrong!");
+            });
+    };
+
     // DELETE (all)
     const clearGrocery = () => {
-        console.log('in clearGrocery (all)');
+        console.log("in clearGrocery (all)");
         axios({
-            method: 'DELETE',
-            url: `/grocery`
-        }).then(response => {
-            fetchGrocery();
-        }).catch(error => {
-            console.log(error);
-            alert('There\'s an error.');
-        });
-    }
+            method: "DELETE",
+            url: `/grocery`,
+        })
+            .then((response) => {
+                fetchGrocery();
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("There's an error.");
+            });
+    };
 
     // DELETE (by id)
 
@@ -95,12 +114,16 @@ function App() {
                 <p>Under Construction...</p>
             </main>
             <Input />
-            <Grocery 
+            <Grocery
                 clearGrocery={clearGrocery}
-                resetGrocery={resetGrocery}/>
+                resetGrocery={resetGrocery}
+            />
             <Grocery />
-            <Item groceryList={groceryList} />
-
+            <Item
+                groceryList={groceryList}
+                groceryPurchase={groceryPurchase}
+                // groceryDelete={groceryDelete}
+            />
         </div>
     );
 }
