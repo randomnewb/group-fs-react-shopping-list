@@ -18,7 +18,18 @@ function App() {
     }, []);
 
     // GET
-
+    const fetchGrocery = () => {
+        axios({
+            method: "GET",
+            url: "/Grocery",
+        })
+            .then((response) => {
+                setGroceryList(response.data);
+            })
+            .catch((error) => {
+                alert("Something went wrong!");
+            });
+    };
     // POST
 
     // PUT (all)
@@ -37,7 +48,7 @@ function App() {
             </main>
             <Input />
             <Grocery />
-            <Item />
+            <Item groceryList={groceryList} />
         </div>
     );
 }
