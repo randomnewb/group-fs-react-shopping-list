@@ -14,20 +14,60 @@ Router
 
 -   /grocery
 
-Input fields at the top of the page
+### Input Component - Input fields at the top of the page
+
+App.jsx
+
+-   [] POST
+
+Router
+
+-   [] POST
+
+Fields
 
 -   [] Item
 -   [] Quantity
 -   [] Unit
 
+Button
+
+-   [] Save button
+
 -   [] useEffect (on page load)
 
-Main Shopping List functions
+### Grocery Component - Main Shopping List functions
+
+Router
+
+-   [] DELETE (all)
+-   [] PUT ('reset' all)
+
+App.jsx
+
+-   DELETE (all)
+-   PUT ('reset' all)
+
+Inside component
 
 -   [] Reset button (changes status of all items from purchased to not purchased)
 -   [] Clear button (deletes all items from database)
 
-Item component (will have access to the id) - Add maxWidth attribute
+### Item Component (will have access to the id) - Add maxWidth attribute
+
+Router
+
+-   [] GET
+-   [] POST (by id)
+-   [] DELETE (by id)
+
+App.jsx
+
+-   [] GET
+-   [] POST (by id)
+-   [] DELETE (by id)
+
+Component (map through)
 
 -   [] name label
 -   [] quantity and unit label
