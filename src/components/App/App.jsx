@@ -35,7 +35,20 @@ function App() {
     // PUT (all)
 
     // PUT (by id)
-
+    const groceryPurchase = (grocery) => {
+        console.log("In purchase");
+        axios({
+            method: "PUT",
+            url: `/grocery/${grocery.id}`,
+        })
+            .then((response) => {
+                console.log(response);
+                fetchGrocery();
+            })
+            .catch((error) => {
+                alert("Something went wrong!");
+            });
+    };
     // DELETE (all)
 
     // DELETE (by id)
@@ -48,7 +61,11 @@ function App() {
             </main>
             <Input />
             <Grocery />
-            <Item groceryList={groceryList} />
+            <Item
+                groceryList={groceryList}
+                groceryPurchase={groceryPurchase}
+                // groceryDelete={groceryDelete}
+            />
         </div>
     );
 }

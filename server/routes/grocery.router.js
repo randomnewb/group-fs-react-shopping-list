@@ -22,6 +22,22 @@ router.get("/", (req, res) => {
 // PUT (all)
 
 // PUT (by id)
+router.put("/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = `
+    UPDATE grocery
+    SET purchased = true
+    where id = $1;
+    `;
+    pool.query(sql, [id])
+        .then((response) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log("Error updating specific grocery", error);
+            res.sendStatus(500);
+        });
+});
 
 // DELETE (all)
 
