@@ -17,14 +17,25 @@ router.get("/", (req, res) => {
         });
 });
 
-// POST
+router.post('/', (req, res) => {
+    console.log('In Post request');
+    let queryText = `INSERT INTO "grocery" 
+                    ("item", "quantity", "unit", "purchased") 
+                    VALUES ($1, $2, $3, $4);`
+    pool.query(queryText, 
+        [req.body.item, req.body.quantity, 
+        req.body.unit, req.body.purchased])
 
-// PUT (all)
+.then((result) => {
+    res.sendStatus(200);
+}).catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+});
+});
 
-// PUT (by id)
 
-// DELETE (all)
 
-// DELETE (by id)
+
 
 module.exports = router;
