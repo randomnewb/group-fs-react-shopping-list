@@ -29,7 +29,9 @@ function Item({ groceryList, groceryPurchase, groceryDelete }) {
                                     </Button>
                                 )}
 
-                                <Button>Delete</Button>
+                                <Button onClick={() => groceryDelete(grocery)}>
+                                    Delete
+                                </Button>
                             </CardActions>
                         </CardContent>
                     </Card>

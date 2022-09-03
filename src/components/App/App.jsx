@@ -104,6 +104,19 @@ function App() {
     };
 
     // DELETE (by id)
+    const groceryDelete = (grocery) => {
+        axios({
+            method: "DELETE",
+            url: `/grocery/${grocery.id}`,
+        })
+            .then((response) => {
+                fetchGrocery();
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Something went wrong!");
+            });
+    };
 
     return (
         <div className="App">
@@ -120,7 +133,7 @@ function App() {
             <Item
                 groceryList={groceryList}
                 groceryPurchase={groceryPurchase}
-                // groceryDelete={groceryDelete}
+                groceryDelete={groceryDelete}
             />
         </div>
     );

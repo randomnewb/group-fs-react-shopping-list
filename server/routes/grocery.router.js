@@ -84,4 +84,21 @@ router.delete("/", (req, res) => {
         });
 });
 
+// DELETE (by id)
+router.delete("/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = `
+    DELETE from GROCERY
+    WHERE id = $1;
+    `;
+    pool.query(sql, [id])
+        .then((response) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log("Problem deleting specific grocery", error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
