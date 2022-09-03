@@ -18,8 +18,18 @@ function App() {
     }, []);
 
     // GET
-    function fetchGrocery() {};
-
+    const fetchGrocery = () => {
+        axios({
+            method: "GET",
+            url: "/grocery",
+        })
+            .then((response) => {
+                setGroceryList(response.data);
+            })
+            .catch((error) => {
+                alert("Something went wrong!");
+            });
+    };
     // POST
 
     // PUT (all)
@@ -64,7 +74,9 @@ function App() {
             <Grocery 
                 clearGrocery={clearGrocery}
                 resetGrocery={resetGrocery}/>
-            <Item />
+            <Grocery />
+            <Item groceryList={groceryList} />
+
         </div>
     );
 }
