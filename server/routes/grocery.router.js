@@ -17,7 +17,23 @@ router.get("/", (req, res) => {
         });
 });
 
-// POST
+router.post('/', (req, res) => {
+    console.log('In Post request');
+    let queryText = `INSERT INTO "grocery" 
+                    ("item", "quantity", "unit", "purchased") 
+                    VALUES ($1, $2, $3, $4);`
+    pool.query(queryText, 
+        [req.body.item, req.body.quantity, 
+        req.body.unit, req.body.purchased])
+
+.then((result) => {
+    res.sendStatus(200);
+}).catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+});
+});
+
 
 // PUT (all)
 router.put('/', (req, res) => {
@@ -32,7 +48,6 @@ router.put('/', (req, res) => {
     });
 });
 
-// PUT (by id)
 
 // DELETE (all)
 router.delete('/', (req, res) => {
@@ -45,6 +60,5 @@ router.delete('/', (req, res) => {
     });
 });
 
-// DELETE (by id)
 
 module.exports = router;

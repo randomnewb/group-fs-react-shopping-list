@@ -32,6 +32,30 @@ function App() {
     };
     // POST
 
+    const addGroceryItem = (evt) => {
+      evt.preventDefault();
+      axios({
+        method: 'POST',
+        url: '/grocery',
+        data: {
+          item: groceryName,
+          quantity: groceryQuantity,
+          unit: groceryUnit,
+          purchased: false,
+        }
+      }).then(response => {
+        setGroceryName(''),
+        setGroceryQuantity(''),
+        setGroceryUnit(''),
+        fetchGrocery();
+      }).catch(error => {
+        console.log(error);
+        alert('Something wrong in axios POST');
+      });
+    }
+
+
+
     // PUT (all)
     const resetGrocery = () => {
         console.log('in resetGrocery (all)');
