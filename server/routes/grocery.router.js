@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool.js");
 
+<<<<<<< HEAD
 router.get('/', (req, res) => {
     console.log("In GET request");
     let queryText = 'SELECT * from "grocery"';
@@ -16,6 +17,10 @@ router.get('/', (req, res) => {
 
 //router.post 
 
+router.post('/', (req, res) => {
+    console.log('In Post request');
+    let queryText = 
+})
 
 
 
@@ -24,5 +29,19 @@ router.get('/', (req, res) => {
 
 
 
+
+=======
+// GET
+
+// POST
+
+// PUT (all)
+
+// PUT (by id)
+
+// DELETE (all)
+
+// DELETE (by id)
+>>>>>>> 9e40842dc99a6547c985f69e893ecc5b22270408
 
 module.exports = router;
