@@ -81,7 +81,6 @@ function App() {
             url: `/grocery/${grocery.id}`,
         })
             .then((response) => {
-                console.log(response);
                 fetchGrocery();
             })
             .catch((error) => {
